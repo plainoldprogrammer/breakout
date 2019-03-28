@@ -1,4 +1,5 @@
 #include <SFML/Graphics.hpp>
+#include <iostream>
 
 int main()
 {
@@ -18,6 +19,19 @@ int main()
             {
                 window.close();
             }
+			else if (event.type == sf::Event::KeyPressed)
+			{
+				if (event.key.code == sf::Keyboard::Left)
+				{
+					std::cout << "left key" << std::endl;
+					bar.setPosition(bar.getPosition().x - 18, bar.getPosition().y);
+				}
+				else if (event.key.code == sf::Keyboard::Right)
+				{
+					std::cout << "right key" << std::endl;
+					bar.setPosition(bar.getPosition().x + 18, bar.getPosition().y);
+				}
+			}
         }
 
         window.clear();
