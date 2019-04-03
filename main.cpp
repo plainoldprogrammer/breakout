@@ -47,6 +47,12 @@ int main()
 		// Drop the ball.
 		ball.setPosition(ball.getPosition().x, ball.getPosition().y + 0.03);
 
+		// printf("%.2f\t%.2f\n", ball.getPosition().y, bar.getPosition().y);
+		if (((int) (ball.getPosition().y + (ball.getRadius() * 2) )) == ((int) bar.getPosition().y))
+		{
+			std::cout << "ball collide with bar" << std::endl;
+		}
+
 		window.clear();
 		window.draw(bar);
 		window.draw(ball);
