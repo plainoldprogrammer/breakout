@@ -44,6 +44,9 @@ int main()
 			}
         }
 
+		// Drop the ball.
+		ball.setPosition(ball.getPosition().x, ball.getPosition().y + 0.03);
+
 		window.clear();
 		window.draw(bar);
 		window.draw(ball);
