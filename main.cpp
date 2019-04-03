@@ -57,7 +57,7 @@ int main()
 		}
 
 		// printf("%.2f\t%.2f\n", ball.getPosition().y, bar.getPosition().y);
-		if (((int) (ball.getPosition().y + (ball.getRadius() * 2) )) == ((int) (bar.getPosition().y - bar.getOutlineThickness()) ))
+		if (((int) (ball.getPosition().y + (ball.getRadius() * 2) + ball.getOutlineThickness() )) == ((int) (bar.getPosition().y - bar.getOutlineThickness()) ))
 		{
 			std::cout << "ball collide with bar" << std::endl;
 			isBallFalling = false;
