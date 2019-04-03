@@ -3,6 +3,8 @@
 
 int main()
 {
+	bool isBallFalling = true;
+
     sf::RenderWindow window(sf::VideoMode(800, 600), "Breakout Clone");
 
     sf::RectangleShape bar;
@@ -45,12 +47,20 @@ int main()
         }
 
 		// Drop the ball.
-		ball.setPosition(ball.getPosition().x, ball.getPosition().y + 0.03);
+		if (isBallFalling)
+		{
+			ball.setPosition(ball.getPosition().x, ball.getPosition().y + 0.03);
+		}
+		else
+		{
+			ball.setPosition(ball.getPosition().x, ball.getPosition().y - 0.03);
+		}
 
 		// printf("%.2f\t%.2f\n", ball.getPosition().y, bar.getPosition().y);
 		if (((int) (ball.getPosition().y + (ball.getRadius() * 2) )) == ((int) bar.getPosition().y))
 		{
 			std::cout << "ball collide with bar" << std::endl;
+			isBallFalling = false;
 		}
 
 		window.clear();
