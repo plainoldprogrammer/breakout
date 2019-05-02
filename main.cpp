@@ -54,6 +54,11 @@ int main()
 		else
 		{
 			ball.setPosition(ball.getPosition().x, ball.getPosition().y - 0.03);
+
+			if (ball.getPosition().y < 0)
+			{
+				isBallFalling = true;
+			}
 		}
 
 		// printf("%.2f\t%.2f\n", ball.getPosition().y, bar.getPosition().y);
