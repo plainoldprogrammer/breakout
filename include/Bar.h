@@ -2,7 +2,6 @@
 #define BAR_H
 
 #include <SFML/Graphics.hpp>
-#include <SFML/System/Vector2.hpp>
 
 class Bar : public sf::RectangleShape
 {

@@ -2,6 +2,7 @@
 #include <iostream>
 
 #include "Bar.h"
+#include "Ball.h"
 
 int main()
 {
@@ -10,16 +11,7 @@ int main()
     sf::RenderWindow window(sf::VideoMode(800, 600), "Breakout Clone");
 
     Bar playerBar;
-    playerBar.setPosition(350, 550);
-
-	sf::CircleShape ball;
-	ball.setRadius(3);
-	sf::Color colorOutlineBall(150, 150, 150);
-	ball.setOutlineColor(colorOutlineBall);
-	sf::Color colorFillBall(100, 100, 100);
-	ball.setFillColor(colorFillBall);
-	ball.setOutlineThickness(3);
-	ball.setPosition(400, 300);
+	Ball ball;
 
     while (window.isOpen())
     {
