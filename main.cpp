@@ -4,6 +4,8 @@
 #include "Bar.h"
 #include "Ball.h"
 
+#define BALL_VELOCITY 0.2
+
 int main()
 {
 	bool isBallFalling = true;
@@ -40,11 +42,11 @@ int main()
 		// Drop the ball.
 		if (isBallFalling)
 		{
-			ball.setPosition(ball.getPosition().x, ball.getPosition().y + 0.03);
+			ball.setPosition(ball.getPosition().x, ball.getPosition().y + BALL_VELOCITY);
 		}
 		else
 		{
-			ball.setPosition(ball.getPosition().x, ball.getPosition().y - 0.03);
+			ball.setPosition(ball.getPosition().x, ball.getPosition().y - BALL_VELOCITY);
 
 			if (ball.getPosition().y < 0)
 			{
