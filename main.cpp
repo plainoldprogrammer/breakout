@@ -1,17 +1,16 @@
 #include <SFML/Graphics.hpp>
 #include <iostream>
 
+#include "Bar.h"
+
 int main()
 {
 	bool isBallFalling = true;
 
     sf::RenderWindow window(sf::VideoMode(800, 600), "Breakout Clone");
 
-    sf::RectangleShape bar;
-    bar.setSize(sf::Vector2f(100, 20));
-    bar.setOutlineColor(sf::Color::Red);
-    bar.setOutlineThickness(3);
-    bar.setPosition(350, 550);
+    Bar playerBar;
+    playerBar.setPosition(350, 550);
 
 	sf::CircleShape ball;
 	ball.setRadius(3);
@@ -36,12 +35,12 @@ int main()
 				if (event.key.code == sf::Keyboard::Left)
 				{
 					std::cout << "left key" << std::endl;
-					bar.setPosition(bar.getPosition().x - 18, bar.getPosition().y);
+					playerBar.setPosition(playerBar.getPosition().x - 18, playerBar.getPosition().y);
 				}
 				else if (event.key.code == sf::Keyboard::Right)
 				{
 					std::cout << "right key" << std::endl;
-					bar.setPosition(bar.getPosition().x + 18, bar.getPosition().y);
+					playerBar.setPosition(playerBar.getPosition().x + 18, playerBar.getPosition().y);
 				}
 			}
         }
@@ -62,14 +61,14 @@ int main()
 		}
 
 		// printf("%.2f\t%.2f\n", ball.getPosition().y, bar.getPosition().y);
-		if (((int) (ball.getPosition().y + (ball.getRadius() * 2) + ball.getOutlineThickness() )) == ((int) (bar.getPosition().y - bar.getOutlineThickness()) ))
+		if (((int) (ball.getPosition().y + (ball.getRadius() * 2) + ball.getOutlineThickness() )) == ((int) (playerBar.getPosition().y - playerBar.getOutlineThickness()) ))
 		{
 			std::cout << "ball collide with bar" << std::endl;
 			isBallFalling = false;
 		}
 
 		window.clear();
-		window.draw(bar);
+		window.draw(playerBar);
 		window.draw(ball);
 		window.display();
     }
