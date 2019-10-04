@@ -57,8 +57,13 @@ int main()
 		// printf("%.2f\t%.2f\n", ball.getPosition().y, bar.getPosition().y);
 		if (((int) (ball.getPosition().y + (ball.getRadius() * 2) + ball.getOutlineThickness() )) == ((int) (playerBar.getPosition().y - playerBar.getOutlineThickness()) ))
 		{
-			std::cout << "ball collide with bar" << std::endl;
+			std::cout << "ball collide with bar top surface" << std::endl;
 			isBallFalling = false;
+		}
+		//	The thickness of the playerBar is considered
+		if ( ( (ball.getPosition().x + 6) >= (playerBar.getPosition().x) ) && ( ball.getPosition().x < ( playerBar.getPosition().x + 100 + 6 )) )
+		{
+			std::cout << "ball is in the limits of the player bar" << std::endl;
 		}
 
 		window.clear();
