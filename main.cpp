@@ -29,12 +29,12 @@ int main()
 				if (event.key.code == sf::Keyboard::Left)
 				{
 					std::cout << "left key" << std::endl;
-					playerBar.setPosition(playerBar.getPosition().x - 18, playerBar.getPosition().y);
+					playerBar.setPosition(playerBar.getPosition().x - 20, playerBar.getPosition().y);
 				}
 				else if (event.key.code == sf::Keyboard::Right)
 				{
 					std::cout << "right key" << std::endl;
-					playerBar.setPosition(playerBar.getPosition().x + 18, playerBar.getPosition().y);
+					playerBar.setPosition(playerBar.getPosition().x + 20, playerBar.getPosition().y);
 				}
 			}
         }
