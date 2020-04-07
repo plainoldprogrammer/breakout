@@ -5,4 +5,5 @@ obj/*
 SFML-2.5.1/*
 breakout.depend
 *.dll
+*.exe
 
