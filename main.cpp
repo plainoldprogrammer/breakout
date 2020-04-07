@@ -3,6 +3,9 @@
 
 #include "Bar.h"
 #include "Ball.h"
+#include "easylogging++.h"
+
+INITIALIZE_EASYLOGGINGPP
 
 #define BALL_VELOCITY 0.2
 
