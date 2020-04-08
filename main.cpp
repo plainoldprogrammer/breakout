@@ -10,6 +10,8 @@ INITIALIZE_EASYLOGGINGPP
 
 #define BALL_VELOCITY 0.8
 
+Brick * createBrick();
+
 int main()
 {
 	bool isBallFalling = true;
@@ -17,7 +19,7 @@ int main()
     sf::RenderWindow window(sf::VideoMode(800, 600), "Breakout Clone");
 
 	Bar playerBar;
-	Brick brick;
+	Brick *singleBrick = createBrick();
 	Ball ball;
 
     while (window.isOpen())
@@ -72,11 +74,20 @@ int main()
 		}
 
 		window.clear();
-		window.draw(brick);
+		window.draw(*singleBrick);
 		window.draw(playerBar);
 		window.draw(ball);
 		window.display();
     }
 
+	delete singleBrick;
     return 0;
 }
+
+Brick * createBrick()
+{
+	Brick * ptrBrick;
+	ptrBrick = new Brick();
+
+}
+

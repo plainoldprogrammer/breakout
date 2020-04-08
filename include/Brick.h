@@ -2,6 +2,7 @@
 #define BRICK_H
 
 #include <SFML/Graphics.hpp>
+#include "easylogging++.h"
 
 class Brick : public sf::RectangleShape
 {
