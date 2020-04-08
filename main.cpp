@@ -11,9 +11,9 @@ INITIALIZE_EASYLOGGINGPP
 
 #define BALL_VELOCITY 0.8
 
-std::vector<Brick> create_bricks();
+void create_bricks(std::vector<Brick *> &);
 
-void draw_bricks(std::vector<Brick>, sf::RenderWindow &);
+void draw_bricks(std::vector<Brick *> &, sf::RenderWindow &);
 
 int main()
 {
@@ -23,7 +23,8 @@ int main()
 
 	Bar playerBar;
 	Ball ball;
-	std::vector<Brick> bricks_vector = create_bricks();
+	std::vector<Brick *> bricks;
+	create_bricks(bricks);
 
     while (window.isOpen())
     {
@@ -81,7 +82,7 @@ int main()
 		window.draw(ball);
 
 		// Draw the bricks.
-		draw_bricks(bricks_vector, window);
+		draw_bricks(bricks, window);
 
 		// Display the graphics.
 		window.display();
@@ -91,28 +92,27 @@ int main()
 }
 
 
-std::vector<Brick> create_bricks()
+void create_bricks(std::vector<Brick *> & bricks_vector)
 {
-	std::vector<Brick> bricks;
+	Brick * the_brick = new Brick();
+	the_brick->setPosition((0) + 45, 30);
+	bricks_vector.push_back(the_brick);
 
-	for (int i = 0; i < 6; i++)
-	{
-		Brick brick;
-		brick.setPosition((i * 120) + 45, 30);
-		bricks.push_back(brick);
-	}
+	the_brick = new Brick();
+	the_brick->setPosition((120 + 45), 30);
+	bricks_vector.push_back(the_brick);
 
-	return bricks;
+	LOG(INFO) << "End of create_bricks() call";
 }
 
 
-void draw_bricks(std::vector<Brick> bricks, sf::RenderWindow & window)
+void draw_bricks(std::vector<Brick *> & bricks_vector, sf::RenderWindow & window)
 {
-	std::vector<Brick>::iterator it = bricks.begin();
+	std::vector<Brick *>::iterator it = bricks_vector.begin();
 
-	while (it != bricks.end())
+	while (it != bricks_vector.end())
 	{
-		window.draw(*it);
+		window.draw(*(*it));
 		it++;
 	}
 
