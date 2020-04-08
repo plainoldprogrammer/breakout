@@ -3,6 +3,7 @@
 
 #include "Bar.h"
 #include "Ball.h"
+#include "Brick.h"
 #include "easylogging++.h"
 
 INITIALIZE_EASYLOGGINGPP
@@ -17,6 +18,7 @@ int main()
 
     Bar playerBar;
 	Ball ball;
+	Brick brick;
 
     while (window.isOpen())
     {
@@ -70,10 +72,14 @@ int main()
 		}
 
 		window.clear();
+
 		window.draw(playerBar);
 		window.draw(ball);
+		window.draw(brick);
+
 		window.display();
     }
 
     return 0;
 }
+
