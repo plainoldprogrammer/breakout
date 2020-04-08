@@ -15,6 +15,8 @@ void create_bricks(std::vector<Brick *> &);
 
 void draw_bricks(std::vector<Brick *> &, sf::RenderWindow &);
 
+void release_memory(std::vector<Brick *> &);
+
 int main()
 {
 	bool isBallFalling = true;
@@ -88,15 +90,7 @@ int main()
 		window.display();
     }
 
-
-	std::vector<Brick *>::iterator it = bricks.begin();
-
-	while (it != bricks.end())
-	{
-		Brick * brick_to_delete = *it;
-		it++;
-		delete brick_to_delete;
-	}
+	release_memory(bricks);
 
     return 0;
 }
@@ -127,4 +121,18 @@ void draw_bricks(std::vector<Brick *> & bricks_vector, sf::RenderWindow & window
 	}
 
 }
+
+void release_memory(std::vector<Brick *> & bricks_vector)
+{
+	std::vector<Brick *>::iterator it = bricks_vector.begin();
+
+	while (it != bricks_vector.end())
+	{
+		Brick * brick_to_delete = *it;
+		it++;
+		delete brick_to_delete;
+	}
+
+}
+
 
