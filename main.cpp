@@ -8,14 +8,14 @@
 
 INITIALIZE_EASYLOGGINGPP
 
-#define BALL_VELOCITY 0.8
+#define BALL_VELOCITY 2
 
 int main()
 {
 	bool isBallFalling = true;
 
     sf::RenderWindow window(sf::VideoMode(800, 600), "Breakout Clone");
-
+:w
     Bar playerBar;
 	Ball ball;
 	Brick brick;
@@ -33,12 +33,12 @@ int main()
 			{
 				if (event.key.code == sf::Keyboard::Left)
 				{
-					LOG(INFO) << "left key";
+					LOG(INFO) << "Left key pressed";
 					playerBar.setPosition(playerBar.getPosition().x - 20, playerBar.getPosition().y);
 				}
 				else if (event.key.code == sf::Keyboard::Right)
 				{
-					LOG(INFO) << "right key";
+					LOG(INFO) << "Right key pressed";
 					playerBar.setPosition(playerBar.getPosition().x + 20, playerBar.getPosition().y);
 				}
 			}
@@ -62,13 +62,13 @@ int main()
 		// printf("%.2f\t%.2f\n", ball.getPosition().y, bar.getPosition().y);
 		if (((int) (ball.getPosition().y + (ball.getRadius() * 2) + ball.getOutlineThickness() )) == ((int) (playerBar.getPosition().y - playerBar.getOutlineThickness()) ))
 		{
-			LOG(INFO) << "ball collide with bar top surface";
+			LOG(INFO) << "Ball collide with bar top surface";
 			isBallFalling = false;
 		}
 		//	The thickness of the playerBar is considered
 		if ( ( (ball.getPosition().x + 6) >= (playerBar.getPosition().x) ) && ( ball.getPosition().x < ( playerBar.getPosition().x + 100 + 6 )) )
 		{
-			LOG(INFO) << "ball is in the limits of the player bar";
+			LOG(INFO) << "Ball inside the limits of the player bar";
 		}
 
 		window.clear();
@@ -79,6 +79,8 @@ int main()
 
 		window.display();
     }
+
+	LOG(INFO) << "End of the gamet di";
 
     return 0;
 }
