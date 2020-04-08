@@ -11,7 +11,7 @@ INITIALIZE_EASYLOGGINGPP
 
 #define BALL_VELOCITY 0.8
 
-std::vector<Brick *> create_bricks();
+std::vector<Brick> create_bricks();
 
 int main()
 {
@@ -21,7 +21,7 @@ int main()
 
 	Bar playerBar;
 	Ball ball;
-	std::vector<Brick *> bricks_vector = create_bricks();
+	std::vector<Brick> bricks_vector = create_bricks();
 
     while (window.isOpen())
     {
@@ -79,11 +79,11 @@ int main()
 		window.draw(ball);
 
 		// Draw the bricks.
-		std::vector<Brick *>::iterator it = bricks_vector.begin();
+		std::vector<Brick>::iterator it = bricks_vector.begin();
 
 		while (it != bricks_vector.end())
 		{
-			window.draw(*(*it));
+			window.draw(*it);
 			it++;
 		}
 
@@ -94,17 +94,16 @@ int main()
     return 0;
 }
 
-std::vector<Brick *> create_bricks()
+std::vector<Brick> create_bricks()
 {
-	std::vector<Brick *> bricks;
+	std::vector<Brick> bricks;
 
-	Brick * ptrBrick = new Brick();
-	ptrBrick->setPosition(10, 20);
-	bricks.push_back(ptrBrick);
-
-	ptrBrick = new Brick();
-	ptrBrick->setPosition(120, 20);
-	bricks.push_back(ptrBrick);
+	for (int i = 0; i < 6; i++)
+	{
+		Brick brick;
+		brick.setPosition((i * 120) + 45, 30);
+		bricks.push_back(brick);
+	}
 
 	return bricks;
 }
