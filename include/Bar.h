@@ -14,4 +14,3 @@ class Bar : public sf::RectangleShape
 };
 
 #endif // BAR_H
-
