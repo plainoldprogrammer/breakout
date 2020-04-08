@@ -3,6 +3,7 @@
 
 #include "Bar.h"
 #include "Ball.h"
+#include "Brick.h"
 #include "easylogging++.h"
 
 INITIALIZE_EASYLOGGINGPP
@@ -15,7 +16,8 @@ int main()
 
     sf::RenderWindow window(sf::VideoMode(800, 600), "Breakout Clone");
 
-    Bar playerBar;
+	Bar playerBar;
+	Brick brick;
 	Ball ball;
 
     while (window.isOpen())
@@ -70,6 +72,7 @@ int main()
 		}
 
 		window.clear();
+		window.draw(brick);
 		window.draw(playerBar);
 		window.draw(ball);
 		window.display();

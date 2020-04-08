@@ -16,3 +16,4 @@ class Brick : public sf::RectangleShape
 };
 
 #endif // BRICK_H
+
