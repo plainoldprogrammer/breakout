@@ -88,6 +88,16 @@ int main()
 		window.display();
     }
 
+
+	std::vector<Brick *>::iterator it = bricks.begin();
+
+	while (it != bricks.end())
+	{
+		Brick * brick_to_delete = *it;
+		it++;
+		delete brick_to_delete;
+	}
+
     return 0;
 }
 
