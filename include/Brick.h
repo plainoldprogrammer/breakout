@@ -1,8 +1,9 @@
 #ifndef BRICK_H
 #define BRICK_H
 
+#include <SFML/Graphics.hpp>
 
-class Brick
+class Brick : public sf::RectangleShape
 {
 	public:
 		Brick();
