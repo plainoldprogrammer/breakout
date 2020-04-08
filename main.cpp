@@ -13,6 +13,8 @@ INITIALIZE_EASYLOGGINGPP
 
 std::vector<Brick> create_bricks();
 
+void draw_bricks(std::vector<Brick>, sf::RenderWindow &);
+
 int main()
 {
 	bool isBallFalling = true;
@@ -79,13 +81,7 @@ int main()
 		window.draw(ball);
 
 		// Draw the bricks.
-		std::vector<Brick>::iterator it = bricks_vector.begin();
-
-		while (it != bricks_vector.end())
-		{
-			window.draw(*it);
-			it++;
-		}
+		draw_bricks(bricks_vector, window);
 
 		// Display the graphics.
 		window.display();
@@ -93,6 +89,7 @@ int main()
 
     return 0;
 }
+
 
 std::vector<Brick> create_bricks()
 {
@@ -106,5 +103,18 @@ std::vector<Brick> create_bricks()
 	}
 
 	return bricks;
+}
+
+
+void draw_bricks(std::vector<Brick> bricks, sf::RenderWindow & window)
+{
+	std::vector<Brick>::iterator it = bricks.begin();
+
+	while (it != bricks.end())
+	{
+		window.draw(*it);
+		it++;
+	}
+
 }
 
