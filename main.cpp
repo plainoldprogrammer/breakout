@@ -1,5 +1,6 @@
 #include <SFML/Graphics.hpp>
 #include <iostream>
+#include <vector>
 
 #include "Bar.h"
 #include "Ball.h"
@@ -10,7 +11,7 @@ INITIALIZE_EASYLOGGINGPP
 
 #define BALL_VELOCITY 0.8
 
-Brick * createBrick();
+std::vector<Brick *> create_bricks();
 
 int main()
 {
@@ -19,8 +20,8 @@ int main()
     sf::RenderWindow window(sf::VideoMode(800, 600), "Breakout Clone");
 
 	Bar playerBar;
-	Brick *singleBrick = createBrick();
 	Ball ball;
+	std::vector<Brick *> bricks_vector = create_bricks();
 
     while (window.isOpen())
     {
@@ -70,24 +71,41 @@ int main()
 		//	The thickness of the playerBar is considered
 		if ( ( (ball.getPosition().x + 6) >= (playerBar.getPosition().x) ) && ( ball.getPosition().x < ( playerBar.getPosition().x + 100 + 6 )) )
 		{
-			LOG(INFO) << "ball is in the limits of the player bar";
+			// LOG(INFO) << "ball is in the limits of the player bar";
 		}
 
 		window.clear();
-		window.draw(*singleBrick);
 		window.draw(playerBar);
 		window.draw(ball);
+
+		// Draw the bricks.
+		std::vector<Brick *>::iterator it = bricks_vector.begin();
+
+		while (it != bricks_vector.end())
+		{
+			window.draw(*(*it));
+			it++;
+		}
+
+		// Display the graphics.
 		window.display();
     }
 
-	delete singleBrick;
     return 0;
 }
 
-Brick * createBrick()
+std::vector<Brick *> create_bricks()
 {
-	Brick * ptrBrick;
-	ptrBrick = new Brick();
+	std::vector<Brick *> bricks;
 
+	Brick * ptrBrick = new Brick();
+	ptrBrick->setPosition(10, 20);
+	bricks.push_back(ptrBrick);
+
+	ptrBrick = new Brick();
+	ptrBrick->setPosition(120, 20);
+	bricks.push_back(ptrBrick);
+
+	return bricks;
 }
 
