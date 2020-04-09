@@ -9,7 +9,7 @@
 
 INITIALIZE_EASYLOGGINGPP
 
-#define BALL_VELOCITY 0.8
+#define BALL_VELOCITY 3
 
 Brick ** create_bricks();
 
@@ -67,7 +67,7 @@ int main()
 		}
 
 		// printf("%.2f\t%.2f\n", ball.getPosition().y, bar.getPosition().y);
-		if (((int) (ball.getPosition().y + (ball.getRadius() * 2) + ball.getOutlineThickness() )) == ((int) (playerBar.getPosition().y - playerBar.getOutlineThickness()) ))
+		if (((int) (ball.getPosition().y + (ball.getRadius() * 2) + ball.getOutlineThickness() )) >= ((int) (playerBar.getPosition().y - playerBar.getOutlineThickness()) ))
 		{
 			LOG(INFO) << "ball collide with bar top surface";
 			isBallFalling = false;
