@@ -102,8 +102,8 @@ Brick ** create_bricks()
 
 	for (int i = 0; i < 6; i++)
 	{
-		all_bricks[i] = new Brick();
-		all_bricks[i]->setPosition((120 * i) + 40, 30);
+		*(all_bricks + i) = new Brick();
+		(*(all_bricks + i))->setPosition((120 * i) + 40, 30);
 	}
 
 	return all_bricks;
