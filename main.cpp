@@ -11,11 +11,11 @@ INITIALIZE_EASYLOGGINGPP
 
 #define BALL_VELOCITY 0.8
 
-void create_bricks(std::vector<Brick *> &);
+Brick ** create_bricks();
 
-void draw_bricks(std::vector<Brick *> &, sf::RenderWindow &);
+void draw_bricks(Brick **, sf::RenderWindow &);
 
-void release_memory(std::vector<Brick *> &);
+void release_memory(Brick **);
 
 int main()
 {
@@ -25,8 +25,7 @@ int main()
 
 	Bar playerBar;
 	Ball ball;
-	std::vector<Brick *> bricks;
-	create_bricks(bricks);
+	Brick ** bricks = create_bricks();
 
     while (window.isOpen())
     {
@@ -79,11 +78,12 @@ int main()
 			// LOG(INFO) << "ball is in the limits of the player bar";
 		}
 
+		// Crear the whole window.
 		window.clear();
+
+		// Draw all the elements on the window.
 		window.draw(playerBar);
 		window.draw(ball);
-
-		// Draw the bricks.
 		draw_bricks(bricks, window);
 
 		// Display the graphics.
@@ -96,43 +96,33 @@ int main()
 }
 
 
-void create_bricks(std::vector<Brick *> & bricks_vector)
+Brick ** create_bricks()
 {
-	Brick * the_brick = new Brick();
-	the_brick->setPosition((0) + 45, 30);
-	bricks_vector.push_back(the_brick);
+	Brick ** all_bricks = new Brick *[6];
 
-	the_brick = new Brick();
-	the_brick->setPosition((120 + 45), 30);
-	bricks_vector.push_back(the_brick);
-
-	LOG(INFO) << "End of create_bricks() call";
-}
-
-
-void draw_bricks(std::vector<Brick *> & bricks_vector, sf::RenderWindow & window)
-{
-	std::vector<Brick *>::iterator it = bricks_vector.begin();
-
-	while (it != bricks_vector.end())
+	for (int i = 0; i < 6; i++)
 	{
-		window.draw(*(*it));
-		it++;
+		all_bricks[i] = new Brick();
+		all_bricks[i]->setPosition((120 * i) + 40, 30);
 	}
 
+	return all_bricks;
 }
 
-void release_memory(std::vector<Brick *> & bricks_vector)
+
+void draw_bricks(Brick ** bricks, sf::RenderWindow & window)
 {
-	std::vector<Brick *>::iterator it = bricks_vector.begin();
-
-	while (it != bricks_vector.end())
+	for (int i = 0; i < 6; i++)
 	{
-		Brick * brick_to_delete = *it;
-		it++;
-		delete brick_to_delete;
+		window.draw(*bricks[i]);
 	}
-
 }
 
+void release_memory(Brick ** bricks)
+{
+	for (int i = 0; i < 6; i++)
+	{
+		delete bricks[i];
+	}
+}
 
