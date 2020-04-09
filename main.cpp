@@ -100,11 +100,12 @@ int main()
 Brick ** create_bricks()
 {
 	Brick ** all_bricks = new Brick *[NUMBER_OF_BRICKS];
+	const int space = 40;
 
 	for (int i = 0; i < NUMBER_OF_BRICKS; i++)
 	{
 		*(all_bricks + i) = new Brick();
-		(*(all_bricks + i))->setPosition((120 * i) + 40, 30);
+		(*(all_bricks + i))->setPosition((120 * i) + space, 60);
 	}
 
 	return all_bricks;
