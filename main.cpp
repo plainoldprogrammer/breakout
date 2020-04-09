@@ -122,7 +122,7 @@ void release_memory(Brick ** bricks)
 {
 	for (int i = 0; i < 6; i++)
 	{
-		delete bricks[i];
+		delete *(bricks + i);
 	}
 }
 
