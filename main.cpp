@@ -9,7 +9,8 @@
 
 INITIALIZE_EASYLOGGINGPP
 
-#define BALL_VELOCITY 3
+#define BALL_VELOCITY 2.5
+#define NUMBER_OF_BRICKS 6
 
 Brick ** create_bricks();
 
@@ -98,9 +99,9 @@ int main()
 
 Brick ** create_bricks()
 {
-	Brick ** all_bricks = new Brick *[6];
+	Brick ** all_bricks = new Brick *[NUMBER_OF_BRICKS];
 
-	for (int i = 0; i < 6; i++)
+	for (int i = 0; i < NUMBER_OF_BRICKS; i++)
 	{
 		*(all_bricks + i) = new Brick();
 		(*(all_bricks + i))->setPosition((120 * i) + 40, 30);
@@ -112,7 +113,7 @@ Brick ** create_bricks()
 
 void draw_bricks(Brick ** bricks, sf::RenderWindow & window)
 {
-	for (int i = 0; i < 6; i++)
+	for (int i = 0; i < NUMBER_OF_BRICKS; i++)
 	{
 		window.draw(*bricks[i]);
 	}
@@ -120,7 +121,7 @@ void draw_bricks(Brick ** bricks, sf::RenderWindow & window)
 
 void release_memory(Brick ** bricks)
 {
-	for (int i = 0; i < 6; i++)
+	for (int i = 0; i < NUMBER_OF_BRICKS; i++)
 	{
 		delete *(bricks + i);
 	}
